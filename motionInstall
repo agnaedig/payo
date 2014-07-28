@@ -1,0 +1,36 @@
+sudo apt-get update && sudo apt-get upgrade     #update your system
+sudo apt-get install rpi-update                 #install or update rpi-update
+sudo wget https://raw.github.com/Hexxeh/rpi-update/master/rpi-update -O /usr/bin/rpi-update && sudo chmod +x /usr/bin/rpi-update     #get ultimate firmware file
+sudo rpi-update                                 #update Firmware  
+sudo shutdown -r now                            #reboot system
+sudo su -                                       #go to root directory
+raspi-config                                    #Enable camera, expand file system
+sudo shutdown -r now                            #reboot system
+mkdir motion                                    #make new directory named motion
+cd motion                                       #enter that directory
+wget "https://www.dropbox.com/s/xdfcxm5hu71s97d/motion-mmal.tar.gz" #get the ultimate testing version of motion
+wget "https://www.dropbox.com/s/pydn02thlgds5bb/motion.conf"        #get a configuration file to get a smooth view + upload after trigger
+tar -zxvf motion-mmal.tar.gz                    #decompress file
+apt-get install -y libjpeg62 libjpeg62-dev libavformat53 libavformat-dev libavcodec53 libavcodec-dev libavutil51 libavutil-dev libc6-dev zlib1g-dev libmysqlclient18 libmysqlclient-dev libpq5 libpq-dev
+apt-get install motion                          #install original motion repo
+cp motion /usr/bin/motion                       #copy latest motion executable to system
+rm -rf /etc/motion                              #removes from directory no longer used
+cp motion.conf /etc/motion.conf                 #Motion configuration for a smooth "real time" view through an internet connection
+echo "disable_camera_led=1" >> /boot/config.txt #Disables camera red LED
+sudo nano /etc/default/motion                   #Start motion in deamond mode
+  ##start_motion_daemon=yes
+sudo chmod -R 777 /home/pi  #Write permission
+
+http://through-the-interface.typepad.com/through_the_interface/2012/09/creating-a-motion-detecting-security-cam-with-a-raspberry-pi-part-2.html
+
+
+bajar python-pip
+http://packages.debian.org/wheezy/python-pip
+cd motion
+wget “http://packages.debian.org/wheezy/python-pip” 
+sudo apt-get install python-pip
+sudo pip-2.7 install gdata
+
+modificar uploader.py 
+-sudo nano motion/uploader.py 
+-python2 >> python2,7
