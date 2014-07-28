@@ -19,18 +19,7 @@ cp motion.conf /etc/motion.conf                 #Motion configuration for a smoo
 echo "disable_camera_led=1" >> /boot/config.txt #Disables camera red LED
 sudo nano /etc/default/motion                   #Start motion in deamond mode
   ##start_motion_daemon=yes
-sudo chmod -R 777 /home/pi  #Write permission
-
-http://through-the-interface.typepad.com/through_the_interface/2012/09/creating-a-motion-detecting-security-cam-with-a-raspberry-pi-part-2.html
-
-
-bajar python-pip
-http://packages.debian.org/wheezy/python-pip
-cd motion
+sudo chmod -R 777 /home/pi                      #Modify to get write permission 
 wget “http://packages.debian.org/wheezy/python-pip” 
 sudo apt-get install python-pip
 sudo pip-2.7 install gdata
-
-modificar uploader.py 
--sudo nano motion/uploader.py 
--python2 >> python2,7
